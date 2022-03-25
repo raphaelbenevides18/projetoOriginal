@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import br.com.rlb.projetoOriginal.entity.Cliente;
+import io.swagger.annotations.ApiModelProperty;
 
 @Entity
 public class Endereco implements Serializable{
@@ -20,13 +20,21 @@ public class Endereco implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@ApiModelProperty(value = "ID do Endereço")
 	private Long id;
+	
+	@ApiModelProperty(value = "Logradouro")
 	private String logradouro;
+	
+	@ApiModelProperty(value = "Bairro")
 	private String bairro;
+	
+	@ApiModelProperty(value = "Cep")
 	private String cep;
 	
 	@JsonIgnore
 	@ManyToOne
+	@ApiModelProperty(value = "Coluna para relacionar cliente/Endereço")
 	@JoinColumn(name="cliente_id")
 	private Cliente cliente;
 

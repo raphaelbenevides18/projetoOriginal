@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import br.com.rlb.projetoOriginal.entity.Endereco;
+import io.swagger.annotations.ApiModelProperty;
 
 
 @Entity
@@ -22,15 +23,19 @@ public class Cliente implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@ApiModelProperty(value = "ID do cliente")
 	private Long id;
 	
+	@ApiModelProperty(value = "Nome do cliente")
 	private String nome;
 	
 	@Column(unique=true)
+	@ApiModelProperty(value = "Email do cliente")
 	private String email;
 	
 	
 	@OneToMany(mappedBy="cliente", cascade=CascadeType.ALL)
+	@ApiModelProperty(value = "Lista de endereços do cliente")
 	private List<Endereco> enderecos = new ArrayList<>();
 
 
@@ -38,12 +43,12 @@ public class Cliente implements Serializable{
 		
 	}
 
-	public Cliente(Long id, String nome, String email, List<Endereco> enderecos) {
+	public Cliente(Long id, String nome, String email) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
-		this.enderecos = enderecos;
+		
 	}
 
 
