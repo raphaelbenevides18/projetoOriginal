@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.google.gson.Gson;
+
 
 import br.com.rlb.projetoOriginal.dto.ClienteNewDTO;
 import br.com.rlb.projetoOriginal.entity.CepResponse;
@@ -17,7 +17,7 @@ import br.com.rlb.projetoOriginal.entity.Endereco;
 import br.com.rlb.projetoOriginal.repository.ClienteRepository;
 import br.com.rlb.projetoOriginal.repository.EnderecoRepository;
 import br.com.rlb.projetoOriginal.service.exception.ObjectNotFoundException;
-import feign.Response;
+
 
 
 
@@ -75,8 +75,6 @@ public class ClienteService {
 		Cliente cli = new Cliente(null, objDto.getNome(), objDto.getEmail());
 		if(objDto.getCep() != null) {
 			CepResponse endAPI = cepService.getCep(objDto.getCep());
-			//Gson gson = new Gson();
-			//String json = gson.toJson(endAPI);
 			Endereco end = new Endereco(null, endAPI.getLogradouro(), endAPI.getBairro(), objDto.getCep(), cli);
 			cli.getEnderecos().add(end);
 			System.out.println(endAPI);
