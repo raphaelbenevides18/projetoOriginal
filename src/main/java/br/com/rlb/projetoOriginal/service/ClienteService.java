@@ -40,7 +40,7 @@ public class ClienteService {
 		
 		Optional<Cliente> obj = dao.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
-		"Objeto não encontrado! Id: " + id + ", Tipo: " + Cliente.class.getName()));
+		"Objeto não encontrado! Id: " + id));
 		}
 	
 	public List<Cliente> findAll(){
