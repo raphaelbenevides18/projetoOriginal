@@ -39,9 +39,6 @@ public class ClienteServiceTest {
 	@Test
 	public void deveRetornar_UmRegistro(){
 		
-		//ClienteService service = Mockito.mock(ClienteService.class);
-		//ClienteRepository dao = Mockito.mock(ClienteRepository.class);
-		
 		Optional<Cliente> objEsperado = setCLiente();
 			
 			Mockito.when(dao.findById(ArgumentMatchers.anyLong())).thenReturn(objEsperado);
